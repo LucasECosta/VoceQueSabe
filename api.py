@@ -19,8 +19,9 @@ def getPlaces(adress):
 
 	lat_lon = lat+","+lon
 
-	places = api.search_places_by_coordinate(lat_lon, "100", "restaurant")
+	places = api.search_places_by_coordinate(lat_lon, "500", "restaurant")
 
 	return places
 def getDetails(place,fields):
 	details = api.get_place_details(place['place_id'], fields)
+	return details

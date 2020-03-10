@@ -16,9 +16,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
+
+
     return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
 def results():
     adress = request.form['adress']
     #Executa a função de buscar endereços próximos.
@@ -26,8 +28,9 @@ def results():
     place = places[0]
     fields = ['name', 'formatted_address', 'international_phone_number', 'website', 'rating', 'review']
     details = getDetails(place,fields)
+    joaquim = "Bar do joaquim"
 
-    return render_template('results.html',places=places,fields=fields,details=details)
+    return render_template('results.html',places=places,fields=fields,details=details,joaquim=joaquim,api=api)
 
 if __name__ == "__main__":
     app.run()

@@ -7,22 +7,33 @@
   <body>
  <table border= "1px solid black" width="100%">
   
-  {{details['result']['website']}}
+
   <tr>
-    <th>======{{place}}======</th>
+    <th>
+      Lugares
+    </th>
   </tr>
   <tr>
-    <td width="50%" >Name : {{nome do lugar}} <br>
-      asd<br>
-      asd<br> 
+    {%for place in places %}
+    {% set details = api.get_place_details(place['place_id'], fields) %}
+    {% set name = details['result']['name'] %}
+    {% set website = details['result']['website'] %}
+    {% set phone_number = details['result']['international_phone_number'] %}
+    {% set address = details['result']['formatted_address'] %}
 
+
+    <td width="50%" >Name : {{name}} <br>
+      Website: <a href="{{website}}">{{website}} </a><br>
+      Telefone: {{phone_number}}<br> 
+      Endereço: {{address}}
 
 
 
     </td>
-
+    
     
   </tr>
+  {%endfor%}
 </table>
  
   </body>
