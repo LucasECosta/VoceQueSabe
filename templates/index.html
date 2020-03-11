@@ -1,5 +1,5 @@
 <!doctype html>
-<html style="background-color:#FFFFFF">
+<html style="background-color:#FFFFFF" lang='en'>
 	<title>VocêQueSabe!</title>
 	<h1 style="font-family:Sans-serif;font-size:150%" >Coloque o endereço que a gente decide por você!</h1>
 	
@@ -9,6 +9,11 @@
 	<body>
 
 		<form method="POST">
+			<select name="time">
+				{% for type in valid_types %}
+				<option value="{{type}}">{{type.replace("_"," ").title()}}</option>
+				{% endfor %}
+			</select>
     		<input name="adress">
     		<input type="submit">
 		</form>
